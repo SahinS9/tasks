@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 def home(request):
@@ -7,5 +8,8 @@ def home(request):
 
 
 def userProfile(request):
-    context = {}
+
+    tags = Tag.objects.all()
+    context = {'tags':tags}
     return render (request, 'base/profile.html', context = context)
+
