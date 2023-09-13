@@ -13,3 +13,9 @@ def userProfile(request):
     context = {'tags':tags}
     return render (request, 'base/profile.html', context = context)
 
+def userLogin(request):
+    pass
+
+def userLogout(request):
+    pass
+

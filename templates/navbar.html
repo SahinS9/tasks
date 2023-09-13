@@ -6,6 +6,15 @@
     <title>Tasks</title>
 </head>
 <body>
+    {% if user.authenticated %}
+    <p>
+        <a>logout</a>
+    </p>
+    {%else%}
+    <p>
+        <a>login</a>
+    </p>
+    {% endif %}
     <hr>
 </body>
 </html>
