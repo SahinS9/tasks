@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
 # Create your views here.
+def home(request):
+    context = {}
+    return render (request, 'base/home.html', context = context)
+
+
+def userProfile(request):
+    context = {}
+    return render (request, 'base/profile.html', context = context)
