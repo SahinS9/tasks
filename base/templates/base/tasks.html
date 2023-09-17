@@ -1,0 +1,15 @@
+<style>
+    label {
+        display:block;
+    }
+</style>
+
+
+<form>
+    {% csrf_token %}
+    <label>add new task</label>
+    <input type = 'text' method = 'POST' placeholder="new task">
+    <label>add tag</label>
+    {{form.as_p}}
+</form>
+
