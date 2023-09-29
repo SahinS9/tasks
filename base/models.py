@@ -12,7 +12,7 @@ class Tag(models.Model):
         return self.name
 
 class Task(models.Model):
-    task = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 1000, null = True)
     tag = models.ForeignKey(Tag, on_delete= models.SET_NULL,null = True)
 

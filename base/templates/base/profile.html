@@ -3,35 +3,45 @@
 {% block content %}
 
 <style>
-
- 
-.grid-container {
-    display:grid;
-  grid-template-columns: 1fr 3fr 1fr;
-        }
-
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
 </style>
 
-<div class = 'grid-container'>
-<div>
-<small> UserName </small>
+<main>
+    <div class='grid-container'>
+        
+        
+        
+        <!-- Progress Container starts -->
+        <div>
+            <small>Progess</small>
+        <a>Progess Bar</a>
+        </div>
+        <!-- Progress Container ends -->
 
-<small>Tag</small>
-{% for tag in tags%}
-    <div>
-        <li>{{tag}}</li
-    ></div>
-{% endfor %}
-</div>
-
-<div>
-    TASKS
-</div>
+        
+        
+        <!-- Tasks Container starts -->
+        <div>
+            <small>New Tasks</small>
+            {% include 'base/tasks.html' %}
+        </div>
+        <!-- Tasks Container ends -->
 
 
-<div class = "task_form">
-{% include 'base/tasks.html'%}
-</div>
 
-</div>
-{% endblock content %}
+        <!-- Tags Container starts -->
+        <div>
+            <small>Tags</small>
+            {% include 'base/tags.html' %}
+        </div>
+        <!-- Tags Container ends -->
+
+
+        
+    </div>
+</main>
+
+{% endblock %}

@@ -4,12 +4,37 @@
     }
 </style>
 
-
-<form>
+<div class ="form_div">
+<form class ="form" action = "" method = "POST">
     {% csrf_token %}
-    <label>add new task</label>
-    <input type = 'text' method = 'POST' placeholder="new task">
-    <label>add tag</label>
-    {{form.as_p}}
-</form>
 
+    <!-- Tags -->
+    <div class = "form_group">
+        <label for = 'tag_decision'>Tags</label>
+        <input name = 'tag' action = '' type = 'text'>
+        <datalist id = 'tag-list'>
+            <select id = 'task-tag'>
+                {%for tag in tags%}
+                <option value = "{{tag.name}}">{{tag.name}}</option>
+                {% endfor %}
+            </select>
+        </datalist>
+
+    </div>
+
+    <!-- Tasks -->
+    <div class = "form_group">
+        <label for = 'task_decision'>Task Name</label>
+        {{task_form.name}}
+    </div>
+
+    <!-- Description -->
+    <div class = "form_group">
+        <label for = 'task_description'>Description</label>
+        {{task_form.description}}
+    </div>
+
+
+
+</form>
+</div>
