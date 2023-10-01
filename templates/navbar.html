@@ -9,13 +9,13 @@
 
 
 <body class = 'selection'>
-    {% if user.authenticated %}
+    {% if request.user.is_authenticated %}
     <p>
-        <a>logout</a>
+        <a href = "{% url 'user-logout'%}">logout</a>
     </p>
     {%else%}
     <p>
-        <a>login</a>
+        <a href = '{% url "user-login"%}'>login</a>
     </p>
     {% endif %}
 

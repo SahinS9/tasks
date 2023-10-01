@@ -19,7 +19,8 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
-
-
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True,)
+#     email = models.EmailField(blank = false)
 
     

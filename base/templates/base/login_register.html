@@ -1,15 +1,56 @@
-{%extends 'main.html'}
+{%extends 'main.html'%}
 
 {%block content %}
 
-<form>
-    <input  placeholder = 'Username' name ='username'>
+<main class = 'auth-layout'>
 
-    <submit>
-        <button>submit</button>
-    </submit>
+    <!-- Registration Page -->
+    
+    {% if page == 'register'%}
+    <div class = 'auth-form'>
+    <h3>Register</h3>
+    <h2 class ='auth-tag-line'>Track Your Tasks!</h2>
 
-</form>
+    <form class = 'form' action = '' method ='POST'>
+        {%csrf_token%}
+
+        {% for field in form %}
+            <label>{{field.label}}</label>
+            {{field}}
+        {% endfor %}
+        <button type = 'submit'>Sign Up</button>
+    </form>
+    <div>
+        <small>Already Have Account?</small>
+        <a href = "{%url 'user-login'%}">Login</a>
+    </div>
+
+
+    </div>
+    <!-- Registration Page ENDs-->
+
+    <!-- Login Page -->
+        {%else%}
+        <div class = 'form'>
+        <h3>Login</h3>
+        <h2 class ='auth-tag-line'>Track Your Tasks!</h2>
+        <form class = 'form' action = "" method = 'POST'>
+            {% csrf_token %}
+            <label>Email</label>
+            <input type = 'text' name = 'email' placeholder = 'Enter Email' value = ''/>
+
+            <label>Password</label>
+            <input type = 'password' name = 'password' placeholder = 'Enter Password' value=''/>
+
+            <button type = 'submit' value = 'login'>Login</button>
+        </form>
+        <small>Have not registered yet?</small>
+        <a href = "{%url 'user-register'%}">Register</a>
+    </div>
+    <!-- Login Page ENDs -->
+    {% endif %}
+
+</main>
 
 
 {% endblock %}
