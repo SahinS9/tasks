@@ -21,7 +21,8 @@ def userProfile(request):
     task_form = TaskForm()
 
     tags = Tag.objects.filter( user_id = request.user.id)
-    tasks = Task.objects.filter( user_id == request.user.id)
+    # tasks = Task.objects.filter( Tag.objects.filter(user_id  = request.user.id).user_id = request.user.id)
+                            # filter( user_id == request.user.id)
     context = {'tags':tags, 'task_form':task_form}
                 # , 'check_data': request.user.id}
 
