@@ -11,16 +11,20 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def home(request):
+    # tasks = Task.objects.get(user_id == request.user.id)
     context = {}
     return render (request, 'base/home.html', context = context)
 
-@login_required(login_url = 'login')
+@login_required(login_url = 'user-login')
 def userProfile(request):
 
     task_form = TaskForm()
 
-    tags = Tag.objects.all()
+    tags = Tag.objects.filter( user_id = request.user.id)
+    tasks = Task.objects.filter( user_id == request.user.id)
     context = {'tags':tags, 'task_form':task_form}
+                # , 'check_data': request.user.id}
+
     return render (request, 'base/profile.html', context = context)
 
 def loginPage(request):
@@ -33,17 +37,17 @@ def loginPage(request):
         return redirect('home')
 
     if request.method == 'POST':
-        email = request.POST.get('email')
+        email = request.POST.get('username')
         password = request.POST.get('password')
 
         try:
-            user = User.objects.get(email = email)
+            user = User.objects.get(username = username)
         except:
             messages.error(request, 'User does not exist')
             return render(request, 'base/login_register.html', context=context)
 
             
-        user = authenticate(request, email = email, password= password)
+        user = authenticate(request, username = username, password= password)
 
         if user is not None:
             print("User authenticated:", user)

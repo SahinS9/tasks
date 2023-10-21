@@ -12,6 +12,7 @@
     {% if request.user.is_authenticated %}
     <p>
         <a href = "{% url 'user-logout'%}">logout</a>
+        
     </p>
     {%else%}
     <p>
@@ -19,7 +20,8 @@
     </p>
     {% endif %}
 
-    <a>Settings</a>
+    <a href = 'setings'>Settings</a>
+    <a href = "{% url 'user-profile' %}">Profile</a>
     <hr>
 </body>
 </html>
