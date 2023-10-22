@@ -34,16 +34,33 @@
         <div class = 'form'>
         <h3>Login</h3>
         <h2 class ='auth-tag-line'>Track Your Tasks!</h2>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+
         <form class = 'form' action = "" method = 'POST'>
             {% csrf_token %}
             <label>Username</label>
-            <input type = 'text' name = 'username' placeholder = 'Enter Username' value = ''/>
+            <input type = 'text' name = 'username' placeholder = 'Enter Username' value = ' '/>
 
             <label>Password</label>
-            <input type = 'password' name = 'password' placeholder = 'Enter Password' value=''/>
+            <input type = 'password' name = 'password' placeholder = 'Enter Password' value=' '/>
 
             <button type = 'submit' value = 'login'>Login</button>
         </form>
+
+
+
+
         <small>Have not registered yet?</small>
         <a href = "{%url 'user-register'%}">Register</a>
     </div>

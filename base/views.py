@@ -31,20 +31,19 @@ def userProfile(request):
 def loginPage(request):
     page = 'login'
     form = UserForm()
-    print('login page started')
     context = {'page':page, 'form':form}
 
     if request.user.is_authenticated:
         return redirect('home')
 
     if request.method == 'POST':
-        email = request.POST.get('username')
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
         try:
             user = User.objects.get(username = username)
         except:
-            messages.error(request, 'User does not exist')
+            messages.error(request, 'Login credentials are wrong')
             return render(request, 'base/login_register.html', context=context)
 
             
