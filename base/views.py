@@ -28,6 +28,28 @@ def userProfile(request):
 
     return render (request, 'base/profile.html', context = context)
 
+###  NEED TO UPDATE ###
+
+
+    # form = RoomForm(instance=room)
+
+    # if request.method == "POST":
+    #     topic_name = request.POST.get('topic')
+
+    #     # if there is same name topic - it ll update, if not then will create
+    #     topic, created = Topic.objects.get_or_create(name = topic_name) 
+    #     room.name = request.POST.get('name')
+    #     room.topic = request.POST.get('Topic')
+    #     room.description = request.POST.get('description')
+    #     room.save()
+    #     return redirect('home')
+
+    # context = {'form':form, 'topics':topics,'room':room}
+    # return render(request, 'base/room_form.html', context)
+
+
+
+
 def loginPage(request):
     page = 'login'
     form = UserForm()
